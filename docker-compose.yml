@@ -5,6 +5,7 @@ services:
         container_name: start_avito_nginx
         depends_on: 
             - start-avito-app
+            - start-avito-db
         volumes:
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf
             - ./html/index/:/etc/nginx/data/www/subscribe/
@@ -26,3 +27,12 @@ services:
             restart_policy:
                 condition: on-failure
                 max_attempts: 3
+
+    start-avito-db:
+        image: mongo
+        container_name: start-avito-db
+        ports:
+            - 27017:27017
+        volumes:
+            - ./db_volume:/data/db
+        

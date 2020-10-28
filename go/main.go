@@ -43,6 +43,7 @@ func subcsribe(w http.ResponseWriter, r *http.Request) {
 		}
 
 	log.Println(str["url"])
+	log.Println(str["email"])
 	fmt.Fprintf(w, "Вы будете получать обновления")
 
 	default:

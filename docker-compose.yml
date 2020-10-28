@@ -7,7 +7,7 @@ services:
             - start-avito-app
         volumes:
             - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-            - ./nginx/index/:/etc/nginx/data/www/subscribe/
+            - ./html/index/:/etc/nginx/data/www/subscribe/
             - ./nginx/index.html:/etc/nginx/html/index.html
         ports:
             - 80:80

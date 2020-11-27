@@ -7,7 +7,7 @@ services:
             - start-avito-app
             - start-avito-db
         volumes:
-            - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+            - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
             - ./html/index/:/etc/nginx/data/www/subscribe/
             - ./nginx/index.html:/etc/nginx/html/index.html
         ports:
@@ -31,8 +31,13 @@ services:
     start-avito-db:
         image: mongo
         container_name: start-avito-db
+        environment:
+            - MONGO_INITDB_DATABASE=start-avito
+            - MONGO_INITDB_ROOT_USERNAME=qst1798
+            - MONGO_INITDB_ROOT_PASSWORD=1234
         ports:
             - 27017:27017
         volumes:
             - ./db_volume:/data/db
+            - ./db_config/init-mongo.js:/docker-enrtypoint-initdb.d/init-mongo.js:ro
         
